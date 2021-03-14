@@ -1,0 +1,119 @@
+dataset: "FIT" # options: FIT or GeoStyle
+
+FIT:
+  # here are the settings should be kept unchanged
+  ori_data_path: "./dataset/FIT/FIT_data.json"
+  normed_data_path: "./dataset/FIT/FIT_data.json"
+  norm_path: "./dataset/FIT/FIT_data_norm.json"
+  dist_mat_path: "./dataset/FIT"
+  group_element_adj_path: "./dataset/FIT/kg_group_adj_normed.json"
+  element_adj_path: "./dataset/FIT/kg_adj_normed.json"
+  input_len: 48
+  seq_len: 120
+  lr: 0.001
+  lr_decay: true 
+  lr_decay_interval: 10
+  lr_decay_gamma: 0.1
+  test_interval: 0.1
+  loss: "mae"
+  optimizer: "adam" # options: adam, sgd
+  epoch: 15
+  batch_size: 400
+  num_workers: 10 # number of workers used for dataloader(the recommended number should be roughly same with the number of your CPU cores)
+  feat_size: 10
+  rnn_hidden_size: 50
+  use_grp_embed: true # whether use user embedding
+  denorm: false # whether to denormalization after the predction
+
+  # optimal settings for KERN, FIT output_len 12; reported in Table 3 of the companion paper
+  #output_len: 12
+  #ext_kg: true # whether to use external knowledge: the message passing over taxonomy tree
+  #int_kg: true # whether to use internal knowledge: the triplet regularization term
+  #triplet_lambda: 0.002
+  #sample_range: 500
+
+  # optimal settings for KERN-E, FIT output_len 12; reported in Table 4 of the companion paper
+  output_len: 12
+  ext_kg: false
+  int_kg: true
+  triplet_lambda: 0.002
+  sample_range: 500
+
+  # optimal settings for KERN-I, FIT output_len 12; reported in Table 4 of the companion paper
+  #output_len: 12
+  #ext_kg: true
+  #int_kg: false
+  #triplet_lambda: 0.001 # not applicable, set arbitrarily
+  #sample_range: 500 # not applicable, set arbitrarily
+
+  # optimal settings for KERN-IE, FIT output_len 12; reported in Table 4 of the companion paper
+  #output_len: 12
+  #ext_kg: false
+  #int_kg: false
+  #triplet_lambda: 0.001 # not applicable, set arbitrarily
+  #sample_range: 500 # not applicable, set arbitrarily
+
+  # optimal settings for KERN, FIT output_len 24; reported in Table 3 of the companion paper
+  #output_len: 24
+  #ext_kg: true
+  #int_kg: true
+  #triplet_lambda: 0.001
+  #sample_range: 500
+
+  # optimal settings for KERN-E, FIT output_len 24; reported in Table 4 of the companion paper
+  #output_len: 24
+  #ext_kg: false
+  #int_kg: true
+  #triplet_lambda: 0.001
+  #sample_range: 500
+
+  # optimal settings for KERN-I, FIT output_len 24; reported in Table 4 of the companion paper
+  #output_len: 24
+  #ext_kg: true
+  #int_kg: false
+  #triplet_lambda: 0.001 # not applicable, set arbitrarily
+  #sample_range: 500 # not applicable, set arbitrarily
+
+  # optimal settings for KERN-IE, FIT output_len 24; reported in Table 4 of the companion paper
+  #output_len: 24
+  #ext_kg: false
+  #int_kg: false
+  #triplet_lambda: 0.001 # not applicable, set arbitrarily
+  #sample_range: 500 # not applicable, set arbitrarily
+
+GeoStyle:
+  raw_data_path: "./dataset/GeoStyle/metadata.pkl"
+  ori_data_path: "./dataset/GeoStyle/geostyle_data.json"
+  normed_data_path: "./dataset/GeoStyle/geostyle_data_normed.json"
+  norm_path: "./dataset/GeoStyle/geostyle_data_norm.json"
+  dist_mat_path: "./dataset/GeoStyle"
+  input_len: 52
+  seq_len: 144 
+  use_grp_embed: true # whether use user embedding
+  lr: 0.001
+  lr_decay: true 
+  lr_decay_interval: 15
+  lr_decay_gamma: 0.1
+  test_interval: 0.1
+  loss: "mae"
+  optimizer: "adam" # options: adam, sgd
+  epoch: 20
+  batch_size: 400
+  num_workers: 10 # number of workers used for dataloader(the recommended number should be roughly same with the number of your CPU cores)
+  feat_size: 10
+  rnn_hidden_size: 50
+  denorm: true # whether to denormalization after the predction
+
+  # optimal settings for KERN, GeoStyle output_len 26(half year); reported in Table 3 of the companion paper
+  output_len: 26
+  ext_kg: false # whether to use external knowledge: the message passing over taxonomy tree
+  int_kg: true # whether to use internal knowledge: the triplet regularization term
+  triplet_lambda: 0.002
+  sample_range: 500
+
+  # optimal settings for KERN-I/KERN-IE, GeoStyle output_len 26(half year); reported in Table 4 of the companion paper
+  #output_len: 26
+  #ext_kg: false
+  #int_kg: false
+  #triplet_lambda: 0.002 # not applicable, set arbitrarily
+  #sample_range: 500 # not applicable, set arbitrarily

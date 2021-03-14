@@ -1,0 +1,7 @@
+PyYAML==5.1.2
+numpy==1.16.4
+tensorboard==1.14.0
+tensorboard-logger==0.1.0
+torch==1.6.0
+torchvision==0.7.0
+tqdm==4.32.1
