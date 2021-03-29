@@ -10,7 +10,7 @@
 
 1. The entry script for training is: train.py
 2. Test the model using the saved model: test.py
-3. An auxiliary script to generate all the testing results (i.e., the results in Table 3&4 shown in the companinon paper) together: reproduce\_table\_3\_4.py
+3. An auxiliary script to generate all the testing results (i.e., the results in Table 3&4 shown in the companinon paper) together: reproduce.py
 4. The config file is: config.yaml
 5. The script for data preprocess and dataloader: utility.py
 6. The model folder: ./model/
@@ -29,7 +29,7 @@ Note that, the downloaded files include both datasets of GeoStyle and FIT.
 
 - The best model will be saved under the folder ./log. You can run this script to load the saved model and produce the metrics score on the test set. Note that this script shares the same config file with train.py, i.e., config.yaml. In other words, you can change the config.yaml to decide which model to load and test. Specifically, we include in this repo the saved models whose performance are reported in this companion paper. You can directly uncomment each corresponding part in the config.yaml and run the test.py to reproduce the results.
 
-6. Generate all the results in Table 3&4 of the reproduce paper: reproduce\_table\_3\_4.py
+6. Generate all the results in Table 3&4 of the reproduce paper: reproduce.py
 
 ### Acknowledgement
 This project is supported by the National Research Foundation, Prime Minister's Office, Singapore under its IRC@Singapore Funding Initiative.
