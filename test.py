@@ -13,7 +13,7 @@ from utility import TrendData
 from torch.utils.tensorboard import SummaryWriter
 
 
-def test(conf):
+def test(conf, _print=True):
     # initiate log files
     log_path = "./log/%s/pred_%d/" %(conf["dataset"], conf["output_len"])
     settings = [conf["loss"]]
@@ -44,18 +44,23 @@ def test(conf):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     conf["device"] = device
 
-    for k, v in conf.items():
-        print(k, v)
+    if _print:
+        for k, v in conf.items():
+            print(k, v)
 
     # initiate model, load parameters from the pre-trained model
     model = KERN(conf, adj=dataset.adj)
     best_model_path = log_path + "model.stat_dict"
-    model.load_state_dict(torch.load(best_model_path))
+    model.load_state_dict(torch.load(best_model_path, map_location=device))
     model.to(device)
 
     mae, mape, all_grd, all_pred, val_mae, val_mape, test_mae, test_mape, test_loss_scalars = evaluate(model, dataset, device, conf)
     each_print = "MAE: %.6f, MAPE: %.6f, VAL_MAE: %.6f, VAL_MAPE: %.6f, TEST_MAE: %.6f, TEST_MAPE: %.6f" %(mae, mape, val_mae, val_mape, test_mae, test_mape)
-    print(each_print)
+
+    if _print:
+        print(each_print)
+    else:
+        return test_mae, test_mape
 
 
 def evaluate(model, dataset, device, conf):

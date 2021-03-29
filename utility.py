@@ -394,8 +394,8 @@ class TrendData(Dataset):
             test_gender = gender_ids
             test_age = age_ids
 
-        print("train data: ", train_ids.shape)
-        print("test data: ", test_ids.shape)
+        #print("train data: ", train_ids.shape)
+        #print("test data: ", test_ids.shape)
         if self.conf["dataset"] == "FIT":
             return train_ids, train_norm, train_shift, train_grps, train_eles, test_ids, test_norm, test_shift, test_grps, test_eles, train_city, train_gender, train_age, test_city, test_gender, test_age
         else:
