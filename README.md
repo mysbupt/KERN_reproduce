@@ -19,11 +19,11 @@
 1. Download the [dataset](https://drive.google.com/file/d/1E_gPmh6lIHyXEx3lRDWWKvm_8op5B82t/view?usp=sharing), decompress it and put it on the top directory: tar -zxvf dataset.tgz
 Note that, the downloaded files include both datasets of GeoStyle and FIT.
 
-2. Change the hyper-parameters in the configure file config.yaml. First, you should specify which dataset you want to use in the first line of config.yaml; second, you can use any pre-defined settings under each dataset (to make sure only keep one set of settings and comment all the others). Note that, all the settings correpsonding to the results in the companion paper's table 3/4 have been provided in the config.yaml, of which one is active and all the others are commented.
+2. Change the hyper-parameters in the configure file config.yaml. First, you should specify which dataset you want to use in the first line of config.yaml; second, you can use any pre-defined settings under each dataset (to make sure that you only keep one set of settings and comment all the others). Note that, all the settings correpsonding to the results in the companion paper's table 3/4 have been provided in the config.yaml, of which one is active and all the others are commented.
 
 3. Run the training: train.py
 
-4. Log/Runs: after running a eperiment under a certain setting, it will generate two log files: one is under ./log, which consists of the predictions, learned embeddings, screen outputs, and the learned model parameters; the other is ./runs, which is the log file that can be visualized by Tensorboard. You can go into the ./runs directory, execute "tensorboard --host="your host ip" --logdir=./", then you can see the training curves by a browser. Note that, you need to install the tensorboard to use this function.
+4. Log/Runs: after running a experiment under a certain setting, it will generate two log files: one is under ./log, which consists of the predictions, learned embeddings, screen outputs, and the learned model parameters; the other is ./runs, which is the log file that can be visualized by Tensorboard. You can go into the ./runs directory, execute "tensorboard --host="your host ip" --logdir=./", then you can see the training curves by a browser. Note that, you need to install the tensorboard to use this function.
 
 5. Test using saved model: test.py.
 
